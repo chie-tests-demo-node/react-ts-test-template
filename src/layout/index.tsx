@@ -8,6 +8,9 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import './index.less';
+import { Route, Routes } from 'react-router-dom';
+import Home from '../pages/Home';
+import CertRecord from '../pages/CertRecord';
 
 const { Header, Sider, Content } = Layout;
 
@@ -25,22 +28,17 @@ const LayoutViews: React.FC = () => {
           style={{ height: '100vh' }}
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['/cert_man']}
           items={[
             {
-              key: '1',
+              key: '/cert_man',
               icon: <UserOutlined />,
-              label: 'nav 1',
+              label: '证书管理',
             },
             {
-              key: '2',
+              key: '/cert_record',
               icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              label: '证书记录',
             },
           ]}
         />
@@ -66,7 +64,10 @@ const LayoutViews: React.FC = () => {
             background: colorBgContainer,
           }}
         >
-          Content
+          <Routes>
+            <Route path='/cert_man' element={<Home />} />
+            <Route path='/cert_record' element={<CertRecord />} />
+          </Routes>
         </Content>
       </Layout>
     </Layout>
